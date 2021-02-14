@@ -20,7 +20,7 @@ body {
 .player-button {
   padding: 20px;
   border-radius: 25px;
-  border: 1 px solid lightgrey;
+  border: 1px solid lightgrey;
 }
 
 /*
@@ -68,4 +68,45 @@ body {
 .third-box {
   margin-top: 25px;
   margin-bottom: -150px;
+}
+
+/*
+///////////////////////////////////////////
+// Customize each button
+*/
+
+.btn-1 {
+  border-top: none;
+  border-left: none;
+}
+
+.btn-2 {
+  border-top: none;
+}
+
+.btn-3 {
+  border-top: none;
+  border-right: none;
+}
+
+.btn-4 {
+  border-left: none;
+}
+
+.btn-6 {
+  border-right: none;
+}
+
+.btn-7 {
+  border-left: none;
+  border-bottom: none;
+}
+
+.btn-8 {
+  border-bottom: none;
+}
+
+.btn-9 {
+  border-right: none;
+  border-bottom: none;
 }

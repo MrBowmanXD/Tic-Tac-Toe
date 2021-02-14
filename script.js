@@ -1,8 +1,7 @@
 "use strict";
 
 const GameBoard = {
-  gameboard: [],
-  flow: [],
+  gameBoard: [],
 };
 
 const displayController = {
@@ -10,7 +9,7 @@ const displayController = {
 };
 
 const player = {
-  name: "name",
-  player: 1,
+  name: "insert name",
+  player: [1, 2],
   turn: true,
 };
