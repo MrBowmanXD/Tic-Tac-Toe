@@ -1,0 +1,71 @@
+/*
+/////////////////////////////////////////////////////////////
+ body
+*/
+body {
+  background: #dd5e89;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #f7bb97, #dd5e89);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #f7bb97, #dd5e89);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  text-align: center;
+}
+
+/*
+//////////////////////////////////////////////////////////
+// general 
+*/
+
+.player-button {
+  padding: 20px;
+  border-radius: 25px;
+  border: 1 px solid lightgrey;
+}
+
+/*
+///////////////////////////////////////////////////////////
+// container / boxes
+*/
+
+.container {
+  padding: 200px;
+  border-radius: 25px;
+  background-color: white;
+  margin-left: 300px;
+  margin-right: 300px;
+  margin-bottom: 100px;
+}
+
+.first-box {
+  border: 1px solid lightgrey;
+  padding: 50px;
+  margin-top: -200px;
+  border-radius: 25px;
+  margin-left: -200px;
+  margin-right: -200px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.second-box {
+  border-bottom: 1px solid lightgrey;
+  background-color: #fdf9f9;
+  margin-left: -200px;
+  margin-right: -200px;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: 80px 80px 80px;
+  grid-template-rows: 80px 80px 80px;
+  width: 100%;
+  padding: 1em 0 1em 0;
+  margin-bottom: 0;
+  justify-content: center;
+}
+
+.third-box {
+  margin-top: 25px;
+  margin-bottom: -150px;
+}
