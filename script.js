@@ -1,18 +1,7 @@
 "use strict";
 
-const GameBoard = {
-  gameBoard: [],
-};
-
-const displayController = {
-  displayController: "display?",
-};
-
-const player = {
-  name: prompt("What is your name?"),
-  player: [0, 1],
-  turn: true,
-};
+/////////////////////////////////////////////////////////
+// Constant of querySelectors
 
 const x = document.querySelector(".x");
 const o = document.querySelector(".o");
@@ -28,6 +17,22 @@ const btn9 = document.querySelector(".btn-9");
 const restart = document.querySelector(".btn-restart");
 
 let playerTurn;
+
+let random;
+
+const GameBoard = {
+  gameBoard: [],
+};
+
+const displayController = {
+  displayController: "display?",
+};
+
+const player = {
+  name: prompt("What is your name?"),
+  player: [0, 1],
+  turn: true,
+};
 
 const playerX = function () {
   playerTurn = player.player[0];
@@ -47,460 +52,241 @@ const player0 = function () {
     return;
   }
 };
+// Helper functions to facilitate checkWIn logic and avoid repetition
+function helperX(a, b, c) {
+  return (
+    a.textContent === "X" && b.textContent === "X" && c.textContent === "X"
+  );
+}
 
-let random;
+function helperO(a, b, c) {
+  return (
+    a.textContent === "O" && b.textContent === "O" && c.textContent === "O"
+  );
+}
+
+function helperXWin() {
+  if (playerTurn === 0) {
+    console.log(`Player ${player.name} wins!!`);
+    return init();
+  }
+  if (playerTurn === 1) {
+    console.log(`Computer wins!!`);
+    return init();
+  }
+}
+
+function helperOWin() {
+  if (playerTurn === 0) {
+    console.log(`Computer wins!!`);
+    return init();
+  }
+  if (playerTurn === 1) {
+    console.log(`Player ${player.name} wins!!`);
+    return init();
+  }
+}
 
 const checkWin = function () {
-  if (
-    btn1.textContent === "X" &&
-    btn2.textContent === "X" &&
-    btn3.textContent === "X"
-  ) {
-    if (playerTurn === 0) {
-      console.log(`Player ${player.name} wins!!`);
-      return init();
-    }
-    if (playerTurn === 1) {
-      console.log(`Computer wins!!`);
-      return init();
-    }
+  // Diferent scenerios of computer/player wins the game
+
+  if (helperX(btn1, btn2, btn3)) {
+    helperXWin();
   }
-  if (
-    btn1.textContent === "O" &&
-    btn2.textContent === "O" &&
-    btn3.textContent === "O"
-  ) {
-    if (playerTurn === 0) {
-      console.log(`Computer wins!!`);
-      return init();
-    }
-    if (playerTurn === 1) {
-      console.log(`Player ${player.name} wins!!`);
-      return init();
-    }
+  if (helperO(btn1, btn2, btn3)) {
+    helperOWin();
   }
-  if (
-    btn4.textContent === "X" &&
-    btn5.textContent === "X" &&
-    btn6.textContent === "X"
-  ) {
-    if (playerTurn === 0) {
-      console.log(`Player ${player.name} wins!!`);
-      return init();
-    }
-    if (playerTurn === 1) {
-      console.log(`Computer wins!!`);
-      return init();
-    }
+  if (helperX(btn4, btn5, btn6)) {
+    helperXWin();
   }
-  if (
-    btn4.textContent === "O" &&
-    btn5.textContent === "O" &&
-    btn6.textContent === "O"
-  ) {
-    if (playerTurn === 0) {
-      console.log(`Computer wins!!`);
-      return init();
-    }
-    if (playerTurn === 1) {
-      console.log(`Player ${player.name} wins!!`);
-      return init();
-    }
+  if (helperO(btn4, btn5, btn6)) {
+    helperOWin();
   }
-  if (
-    btn7.textContent === "X" &&
-    btn8.textContent === "X" &&
-    btn9.textContent === "X"
-  ) {
-    if (playerTurn === 0) {
-      console.log(`Player ${player.name} wins!!`);
-      return init();
-    }
-    if (playerTurn === 1) {
-      console.log(`Computer wins!!`);
-      return init();
-    }
+  if (helperX(btn7, btn8, btn9)) {
+    helperXWin();
   }
-  if (
-    btn7.textContent === "O" &&
-    btn8.textContent === "O" &&
-    btn9.textContent === "O"
-  ) {
-    if (playerTurn === 0) {
-      console.log(`Computer wins!!`);
-      return init();
-    }
-    if (playerTurn === 1) {
-      console.log(`Player ${player.name} wins!!`);
-      return init();
-    }
+  if (helperO(btn7, btn8, btn9)) {
+    helperOWin();
   }
-  if (
-    btn1.textContent === "X" &&
-    btn4.textContent === "X" &&
-    btn7.textContent === "X"
-  ) {
-    if (playerTurn === 0) {
-      console.log(`Player ${player.name} wins!!`);
-      return init();
-    }
-    if (playerTurn === 1) {
-      console.log(`Computer wins!!`);
-      return init();
-    }
+  if (helperX(btn1, btn4, btn7)) {
+    helperXWin();
   }
-  if (
-    btn1.textContent === "O" &&
-    btn4.textContent === "O" &&
-    btn7.textContent === "O"
-  ) {
-    if (playerTurn === 0) {
-      console.log(`Computer wins!!`);
-      return init();
-    }
-    if (playerTurn === 1) {
-      console.log(`Player ${player.name} wins!!`);
-      return init();
-    }
+  if (helperO(btn1, btn4, btn7)) {
+    helperOWin();
   }
-  if (
-    btn2.textContent === "X" &&
-    btn5.textContent === "X" &&
-    btn8.textContent === "X"
-  ) {
-    if (playerTurn === 0) {
-      console.log(`Player ${player.name} wins!!`);
-      return init();
-    }
-    if (playerTurn === 1) {
-      console.log(`Computer wins!!`);
-      return init();
-    }
+  if (helperX(btn2, btn5, btn8)) {
+    helperXWin();
   }
-  if (
-    btn2.textContent === "O" &&
-    btn5.textContent === "O" &&
-    btn8.textContent === "O"
-  ) {
-    if (playerTurn === 0) {
-      console.log(`Computer wins!!`);
-      return init();
-    }
-    if (playerTurn === 1) {
-      console.log(`Player ${player.name} wins!!`);
-      return init();
-    }
+  if (helperO(btn2, btn5, btn8)) {
+    helperOWin();
   }
-  if (
-    btn3.textContent === "X" &&
-    btn6.textContent === "X" &&
-    btn9.textContent === "X"
-  ) {
-    if (playerTurn === 0) {
-      console.log(`Player ${player.name} wins!!`);
-      return init();
-    }
-    if (playerTurn === 1) {
-      console.log(`Computer wins!!`);
-      return init();
-    }
+  if (helperX(btn3, btn6, btn9)) {
+    helperXWin();
   }
-  if (
-    btn3.textContent === "O" &&
-    btn6.textContent === "O" &&
-    btn9.textContent === "O"
-  ) {
-    if (playerTurn === 0) {
-      console.log(`Computer wins!!`);
-      return init();
-    }
-    if (playerTurn === 1) {
-      console.log(`Player ${player.name} wins!!`);
-      return init();
-    }
+  if (helperO(btn3, btn6, btn9)) {
+    helperOWin();
   }
-  if (
-    btn1.textContent === "X" &&
-    btn5.textContent === "X" &&
-    btn9.textContent === "X"
-  ) {
-    if (playerTurn === 0) {
-      console.log(`Player ${player.name} wins!!`);
-      return init();
-    }
-    if (playerTurn === 1) {
-      console.log(`Computer wins!!`);
-      return init();
-    }
+  if (helperX(btn1, btn5, btn9)) {
+    helperXWin();
   }
-  if (
-    btn1.textContent === "O" &&
-    btn5.textContent === "O" &&
-    btn9.textContent === "O"
-  ) {
-    if (playerTurn === 0) {
-      console.log(`Computer wins!!`);
-      return init();
-    }
-    if (playerTurn === 1) {
-      console.log(`Player ${player.name} wins!!`);
-      return init();
-    }
+  if (helperO(btn1, btn5, btn9)) {
+    helperOWin();
   }
-  if (
-    btn3.textContent === "X" &&
-    btn5.textContent === "X" &&
-    btn7.textContent === "X"
-  ) {
-    if (playerTurn === 0) {
-      console.log(`Player ${player.name} wins!!`);
-      return init();
-    }
-    if (playerTurn === 1) {
-      console.log(`Computer wins!!`);
-      return init();
-    }
+  if (helperX(btn3, btn5, btn7)) {
+    helperXWin();
   }
-  if (
-    btn3.textContent === "O" &&
-    btn5.textContent === "O" &&
-    btn7.textContent === "O"
-  ) {
-    if (playerTurn === 0) {
-      console.log(`Computer wins!!`);
-      return init();
-    }
-    if (playerTurn === 1) {
-      console.log(`Player ${player.name} wins!!`);
-      return init();
-    }
+  if (helperO(btn3, btn5, btn7)) {
+    helperOWin();
   }
 };
 
 const computerTurn = function () {
   random = Math.floor(Math.random() * 9);
 
-  const helperFunction = function () {
-    random = Math.floor(Math.random() * 9);
-
-    // If random is a number corresponding to the box, then mark the box
-    if (random === 1 && playerTurn === 0) {
-      if (btn1.textContent === "O" || btn1.textContent === "X")
-        return (random = Math.floor(Math.random() * 9));
-      btn1.textContent = "O";
-      return;
-    }
-    if (random === 2 && playerTurn === 0) {
-      if (btn2.textContent === "O" || btn2.textContent === "X")
-        return (random = Math.floor(Math.random() * 9));
-      btn2.textContent = "O";
-      return;
-    }
-    if (random === 3 && playerTurn === 0) {
-      if (btn3.textContent === "O" || btn3.textContent === "X")
-        return (random = Math.floor(Math.random() * 9));
-      btn3.textContent = "O";
-      return;
-    }
-    if (random === 4 && playerTurn === 0) {
-      if (btn4.textContent === "O" || btn4.textContent === "X")
-        return (random = Math.floor(Math.random() * 9));
-      btn4.textContent = "O";
-      return;
-    }
-    if (random === 5 && playerTurn === 0) {
-      if (btn5.textContent === "O" || btn5.textContent === "X")
-        return (random = Math.floor(Math.random() * 9));
-      btn5.textContent = "O";
-      return;
-    }
-    if (random === 6 && playerTurn === 0) {
-      if (btn6.textContent === "O" || btn6.textContent === "X")
-        return (random = Math.floor(Math.random() * 9));
-      btn6.textContent = "O";
-      return;
-    }
-    if (random === 7 && playerTurn === 0) {
-      if (btn7.textContent === "O" || btn7.textContent === "X")
-        return (random = Math.floor(Math.random() * 9));
-      btn7.textContent = "O";
-      return;
-    }
-    if (random === 8 && playerTurn === 0) {
-      if (btn8.textContent === "O" || btn8.textContent === "X")
-        return (random = Math.floor(Math.random() * 9));
-      btn8.textContent = "O";
-      return;
-    }
-    if (random === 9 && playerTurn === 0) {
-      if (btn9.textContent === "O" || btn9.textContent === "X")
-        return (random = Math.floor(Math.random() * 9));
-      btn9.textContent = "O";
-      return;
-    }
-    if (random === 1 && playerTurn === 1) {
-      if (btn1.textContent === "O" || btn1.textContent === "X")
-        return (random = Math.floor(Math.random() * 9));
-      btn1.textContent = "X";
-      return;
-    }
-    if (random === 2 && playerTurn === 1) {
-      if (btn2.textContent === "O" || btn2.textContent === "X")
-        return (random = Math.floor(Math.random() * 9));
-      btn2.textContent = "X";
-      return;
-    }
-    if (random === 3 && playerTurn === 1) {
-      if (btn3.textContent === "O" || btn3.textContent === "X")
-        return (random = Math.floor(Math.random() * 9));
-      btn3.textContent = "X";
-      return;
-    }
-    if (random === 4 && playerTurn === 1) {
-      if (btn4.textContent === "O" || btn4.textContent === "X")
-        return (random = Math.floor(Math.random() * 9));
-      btn4.textContent = "X";
-      return;
-    }
-    if (random === 5 && playerTurn === 1) {
-      if (btn5.textContent === "O" || btn5.textContent === "X")
-        return (random = Math.floor(Math.random() * 9));
-      btn5.textContent = "X";
-      return;
-    }
-    if (random === 6 && playerTurn === 1) {
-      if (btn6.textContent === "O" || btn6.textContent === "X")
-        return (random = Math.floor(Math.random() * 9));
-      btn6.textContent = "X";
-      return;
-    }
-    if (random === 7 && playerTurn === 1) {
-      if (btn7.textContent === "O" || btn7.textContent === "X")
-        return (random = Math.floor(Math.random() * 9));
-      btn7.textContent = "X";
-      return;
-    }
-    if (random === 8 && playerTurn === 1) {
-      if (btn8.textContent === "O" || btn8.textContent === "X")
-        return (random = Math.floor(Math.random() * 9));
-      btn8.textContent = "X";
-      return;
-    }
-    if (random === 9 && playerTurn === 1) {
-      if (btn9.textContent === "O" || btn9.textContent === "X")
-        return (random = Math.floor(Math.random() * 9));
-      btn9.textContent = "X";
-      return;
-    }
-  };
-
   // If random is a number corresponding to the box, then mark the box
   if (random === 1 && playerTurn === 0) {
-    if (btn1.textContent === "O" || btn1.textContent === "X")
-      return helperFunction();
+    if (btn1.textContent === "O" || btn1.textContent === "X") {
+      random = Math.floor(Math.random() * 9);
+      return computerTurn();
+    }
+      
     btn1.textContent = "O";
     return;
   }
   if (random === 2 && playerTurn === 0) {
-    if (btn2.textContent === "O" || btn2.textContent === "X")
-      return helperFunction();
+    if (btn2.textContent === "O" || btn2.textContent === "X"){
+      random = Math.floor(Math.random() * 9);
+      return computerTurn();
+    }
     btn2.textContent = "O";
     return;
   }
   if (random === 3 && playerTurn === 0) {
-    if (btn3.textContent === "O" || btn3.textContent === "X")
-      return helperFunction();
+    if (btn3.textContent === "O" || btn3.textContent === "X"){
+      random = Math.floor(Math.random() * 9);
+      return computerTurn();
+    }
 
     btn3.textContent = "O";
     return;
   }
   if (random === 4 && playerTurn === 0) {
-    if (btn4.textContent === "O" || btn4.textContent === "X")
-      return helperFunction();
+    if (btn4.textContent === "O" || btn4.textContent === "X"){
+      random = Math.floor(Math.random() * 9);
+      return computerTurn();
+    }
     btn4.textContent = "O";
     return;
   }
   if (random === 5 && playerTurn === 0) {
-    if (btn5.textContent === "O" || btn5.textContent === "X")
-      return helperFunction();
+    if (btn5.textContent === "O" || btn5.textContent === "X"){
+      random = Math.floor(Math.random() * 9);
+      return computerTurn();
+    }
     btn5.textContent = "O";
     return;
   }
   if (random === 6 && playerTurn === 0) {
-    if (btn6.textContent === "O" || btn6.textContent === "X")
-      return helperFunction();
+    if (btn6.textContent === "O" || btn6.textContent === "X"){
+      random = Math.floor(Math.random() * 9);
+      return computerTurn();
+    }
     btn6.textContent = "O";
     return;
   }
   if (random === 7 && playerTurn === 0) {
-    if (btn7.textContent === "O" || btn7.textContent === "X")
-      return helperFunction();
+    if (btn7.textContent === "O" || btn7.textContent === "X"){
+      random = Math.floor(Math.random() * 9);
+      return computerTurn();
+    }
     btn7.textContent = "O";
     return;
   }
   if (random === 8 && playerTurn === 0) {
-    if (btn8.textContent === "O" || btn8.textContent === "X")
-      return helperFunction();
+    if (btn8.textContent === "O" || btn8.textContent === "X"){
+      random = Math.floor(Math.random() * 9);
+      return computerTurn();
+    }
     btn8.textContent = "O";
     return;
   }
   if (random === 9 && playerTurn === 0) {
-    if (btn9.textContent === "O" || btn9.textContent === "X")
-      return helperFunction();
+    if (btn9.textContent === "O" || btn9.textContent === "X"){
+      random = Math.floor(Math.random() * 9);
+      return computerTurn();
+    }
     btn9.textContent = "O";
     return;
   }
   if (random === 1 && playerTurn === 1) {
-    if (btn1.textContent === "O" || btn1.textContent === "X")
-      return helperFunction();
+    if (btn1.textContent === "O" || btn1.textContent === "X"){
+      random = Math.floor(Math.random() * 9);
+      return computerTurn();
+    }
     btn1.textContent = "X";
     return;
   }
   if (random === 2 && playerTurn === 1) {
-    if (btn2.textContent === "O" || btn2.textContent === "X")
-      return helperFunction();
+    if (btn2.textContent === "O" || btn2.textContent === "X"){
+      random = Math.floor(Math.random() * 9);
+      return computerTurn();
+    }
     btn2.textContent = "X";
     return;
   }
   if (random === 3 && playerTurn === 1) {
-    if (btn3.textContent === "O" || btn3.textContent === "X")
-      return helperFunction();
+    if (btn3.textContent === "O" || btn3.textContent === "X"){
+      random = Math.floor(Math.random() * 9);
+      return computerTurn();
+    }
     btn3.textContent = "X";
     return;
   }
   if (random === 4 && playerTurn === 1) {
-    if (btn4.textContent === "O" || btn4.textContent === "X")
-      return helperFunction();
+    if (btn4.textContent === "O" || btn4.textContent === "X"){
+      random = Math.floor(Math.random() * 9);
+      return computerTurn();
+    }
     btn4.textContent = "X";
     return;
   }
   if (random === 5 && playerTurn === 1) {
-    if (btn5.textContent === "O" || btn5.textContent === "X")
-      return helperFunction();
+    if (btn5.textContent === "O" || btn5.textContent === "X"){
+      random = Math.floor(Math.random() * 9);
+      return computerTurn();
+    }
     btn5.textContent = "X";
     return;
   }
   if (random === 6 && playerTurn === 1) {
-    if (btn6.textContent === "O" || btn6.textContent === "X")
-      return helperFunction();
+    if (btn6.textContent === "O" || btn6.textContent === "X"){
+      random = Math.floor(Math.random() * 9);
+      return computerTurn();
+    }
     btn6.textContent = "X";
     return;
   }
   if (random === 7 && playerTurn === 1) {
-    if (btn7.textContent === "O" || btn7.textContent === "X")
-      return helperFunction();
+    if (btn7.textContent === "O" || btn7.textContent === "X"){
+      random = Math.floor(Math.random() * 9);
+      return computerTurn();
+    }
     btn7.textContent = "X";
     return;
   }
   if (random === 8 && playerTurn === 1) {
-    if (btn8.textContent === "O" || btn8.textContent === "X")
-      return helperFunction();
+    if (btn8.textContent === "O" || btn8.textContent === "X"){
+      random = Math.floor(Math.random() * 9);
+      return computerTurn();
+    }
     btn8.textContent = "X";
     return;
   }
   if (random === 9 && playerTurn === 1) {
-    if (btn9.textContent === "O" || btn9.textContent === "X")
-      return helperFunction();
+    if (btn9.textContent === "O" || btn9.textContent === "X"){
+      random = Math.floor(Math.random() * 9);
+      return computerTurn();
+    }
     btn9.textContent = "X";
     return;
   }
